@@ -571,7 +571,7 @@ footer{
 
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">View My Work</a>
-      <a href="#" id="resume-btn" class="btn btn-outline">Download Resume</a>
+      <a href="https://developerajithkumar.github.io/ajith-kumar-s/Ajith-Kumar-S.pdf" id="resume-btn" class="btn btn-outline" target="_blank" rel="noopener" download>Download Resume</a>
       <a href="#contact" class="btn btn-outline">Contact Me</a>
     </div>
   </div>
@@ -686,7 +686,7 @@ footer{
     <div class="skills-grid">
       <div class="skill-cat reveal">
         <h4>Frontend</h4>
-        <ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React.js</li></ul>
+        <ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React.js</li><li>Tailwind CSS</li><li>Bootstrap</li></ul>
       </div>
       <div class="skill-cat reveal">
         <h4>Backend</h4>
@@ -812,24 +812,35 @@ footer{
       <div class="edu-card reveal">
         <span class="edu-year">2021 — 2023</span>
         <h4>Master of Science in Information Technology</h4>
-        <p>Arignar Anna Government Arts College</p>
+        <p>Arignar Anna Government Arts College · 79.9%</p>
       </div>
       <div class="edu-card reveal">
         <span class="edu-year">2018 — 2021</span>
         <h4>Bachelor of Science in Computer Science</h4>
-        <p>Arignar Anna Government Arts College</p>
+        <p>Arignar Anna Government Arts College · 76%</p>
+      </div>
+      <div class="edu-card reveal">
+        <span class="edu-year">2018</span>
+        <h4>Higher Secondary (HSC)</h4>
+        <p>Indo American School · 65%</p>
+      </div>
+      <div class="edu-card reveal">
+        <span class="edu-year">2016</span>
+        <h4>Secondary School (SSLC)</h4>
+        <p>Peace Garden Matriculation Higher Secondary School · 80.4%</p>
       </div>
     </div>
 
     <div class="cert-card reveal">
-      <div style="display:flex; align-items:center; gap:20px;">
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap; width:100%;">
         <div class="cert-badge">JV</div>
-        <div>
+        <div style="flex:1; min-width:220px;">
           <h4 style="font-family:var(--display); font-weight:600; font-size:1.1rem;">Java Full Stack Developer</h4>
           <p style="color:var(--text-dim); font-size:0.88rem; margin-top:4px;">Credo Systemz · Issued June 2023</p>
         </div>
+        <a href="https://developerajithkumar.github.io/ajith-kumar-s/S-Ajithkumar-certificate.jpg" class="btn btn-outline" style="padding:11px 22px;" target="_blank" rel="noopener">View Certificate</a>
       </div>
-      <a href="#contact" class="btn btn-outline" style="padding:11px 22px;">View Certificate</a>
+      <img src="https://developerajithkumar.github.io/ajith-kumar-s/S-Ajithkumar-certificate.jpg" alt="Ajith Kumar Certificate" style="width:100%; max-width:320px; height:auto; border-radius:16px; border:1px solid var(--panel-border); margin-top:16px;" />
     </div>
   </div>
 </section>
@@ -844,23 +855,12 @@ footer{
       <div class="contact-info reveal">
         <p>Have a project in mind — a new site, a Shopify store, or an AI workflow that needs building? Send the details below or reach out directly.</p>
         <div class="social-list">
-          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
-          <a href="https://github.com" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
-          <a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp <span class="arrow">→</span></a>
+          <a href="https://www.linkedin.com/in/ajith-kumar-s-001830242/" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+          <a href="https://github.com/developerajithkumar/ajith-kumar-s" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+          <a href="https://wa.me/6369344539" target="_blank" rel="noopener">WhatsApp <span class="arrow">→</span></a>
           <a href="mailto:hello@ajithkumar.dev">Email <span class="arrow">→</span></a>
         </div>
       </div>
-
-      <form class="contact-form reveal" id="contact-form">
-        <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your full name" required /></div>
-        <div class="field"><label>Email</label><input type="email" name="email" placeholder="you@company.com" required /></div>
-        <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="+91 00000 00000" /></div>
-        <div class="field"><label>Project Details</label><textarea name="details" placeholder="Tell me about your project..." required></textarea></div>
-        <div class="form-btns">
-          <button type="submit" class="btn btn-primary">Send Message</button>
-          <a href="#" class="btn btn-outline">Schedule a Call</a>
-        </div>
-      </form>
     </div>
   </div>
 </section>
@@ -1016,20 +1016,17 @@ gsap.utils.toArray('.tl-dot').forEach(dot=>{
 });
 
 /* ---------- Contact form (demo submit) ---------- */
-document.getElementById('contact-form').addEventListener('submit', function(e){
-  e.preventDefault();
-  const btn = this.querySelector('button[type="submit"]');
-  const original = btn.textContent;
-  btn.textContent = 'Message Sent ✓';
-  gsap.fromTo(btn, {scale:0.95},{scale:1, duration:0.4, ease:'back.out(3)'});
-  setTimeout(()=>{ btn.textContent = original; this.reset(); }, 2600);
-});
-
-/* ---------- Resume button placeholder ---------- */
-document.getElementById('resume-btn').addEventListener('click', function(e){
-  e.preventDefault();
-  alert('Add your resume PDF link here (e.g. href to /resume.pdf) to enable downloads.');
-});
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.textContent = 'Message Sent ✓';
+    gsap.fromTo(btn, {scale:0.95},{scale:1, duration:0.4, ease:'back.out(3)'});
+    setTimeout(()=>{ btn.textContent = original; this.reset(); }, 2600);
+  });
+}
 
 /* ---------- Refresh ScrollTrigger after load ---------- */
 window.addEventListener('load', ()=> ScrollTrigger.refresh());
